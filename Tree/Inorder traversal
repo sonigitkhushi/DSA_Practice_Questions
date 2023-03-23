@@ -1,0 +1,13 @@
+class solution{
+  public static int InorderTravers(Node root){
+      ArrayList<Integer>list=new ArrayList<Integer>();
+      if(root!=null){
+        list.add(root.left);
+        list.add(root.data);
+        list.add(root.right);
+      }
+  return list;
+  }
+
+
+}
