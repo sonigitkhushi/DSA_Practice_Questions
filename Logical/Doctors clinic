@@ -1,0 +1,46 @@
+//{ Driver Code Starts
+//Initial Template for Java
+
+import java.io.*;
+import java.util.*;
+import java.lang.*;
+
+class GFG{
+    public static void main(String args[])throws IOException
+    {
+        BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(read.readLine());
+        while(t-- > 0){
+            String arr[] = read.readLine().trim().split("\\s+");
+            int N = Integer.parseInt(arr[0]);
+            int X = Integer.parseInt(arr[1]);
+
+            Solution ob = new Solution();
+            System.out.println(ob.waitingTime(N, X));
+        }
+    }
+}
+
+// } Driver Code Ends
+
+
+//User function Template for Java
+
+class Solution{
+    static int waitingTime(int N, int X){
+       
+        // int res=0;
+        // int v=0;
+        
+        // for(int i=0; i<N; i=i+X){
+        //     res+=i;
+        // }
+        // for(int i=10; i<N; i=i+10){
+        //     v+=i;
+        // }
+        // return v-res;
+        if(X>10) return 0;
+        int wt=((N-1)*(10-X));
+        return wt;
+    }
+}
