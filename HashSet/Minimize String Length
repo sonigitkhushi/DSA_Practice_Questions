@@ -1,0 +1,20 @@
+class Solution {
+    public int minimizedStringLength(String s) {
+        // StringBuilder sb=new StringBuilder();
+        // int count=0;
+        // for(int i=0; i<s.length(); i++){
+        //     if(s.charAt(i)==s.charAt(i+1)) count++;
+        // }
+        // int mid=count/2;
+        // for(int i=mid; i<count;i++){
+        //     if(s.charAt(mid)==s.charAt(mid-1) || s.charAt(mid)==s.charAt(mid+1)){
+                
+        //     }
+        // }
+        HashSet<Character>st=new HashSet<>();
+        for(int i=0; i<s.length();i++){
+            st.add(s.charAt(i));
+        }
+        return st.size();
+    }
+}
