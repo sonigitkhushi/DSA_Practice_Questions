@@ -1,0 +1,40 @@
+class Solution {
+    public int minimumOperations(int[] nums) {
+        // int count=0;
+        // int[] diff=new int[nums.length];
+        // int min=Integer.MAX_VALUE;
+        // for(int i=0; i<nums.length; i++){
+        //     if(nums[i]<min){
+        //         min=nums[i];
+                
+        //         diff[i]= nums[i]-min;
+        //         count++;
+                
+        //     }
+
+        //     if(nums[i]==0){
+        //         count=0;
+        //     }
+        // }
+        // return count;
+
+        PriorityQueue<Integer>pq=new PriorityQueue<>();
+        for(int i=0; i<nums.length; i++){
+            pq.add(nums[i]);
+        }
+        int curr=0;
+        int count=0;
+        while(!pq.isEmpty()){
+            if(pq.peek()==0) pq.poll();
+            else{
+                int top=pq.peek()-curr;
+                if(top!=0){
+                    curr+=top;
+                    count++;
+                }
+                pq.poll();
+            }
+        }
+        return count;
+    }
+}
