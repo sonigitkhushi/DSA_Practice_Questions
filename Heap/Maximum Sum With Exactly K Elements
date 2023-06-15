@@ -1,0 +1,55 @@
+class Solution {
+    public int maximizeSum(int[] nums, int k) {
+       /// simple solution:
+       
+       
+        // Arrays.sort(nums);
+        // int var=0;
+        // int sum=0;
+        // int n=nums.length;
+        // for(int i=0; i<k; i++){
+        //     var=n+1;
+        //     nums[n]=var;
+        //     sum=var+(var-1); 
+        // }
+        // return sum;
+
+        //PriorityQueue:
+
+        // PriorityQueue<Integer>pq=new PriorityQueue<>(Collections.reverseOrder());
+        // for(int i=0; i<nums.length;i++){
+        //     pq.add(nums[i]);
+        // }
+        // int sum=0;
+        // while(k-->0){
+           
+        //    int u= pq.poll();
+         
+        //    sum+=u;
+        //    u++;
+        //    pq.add(u);
+            
+
+        // }
+        // return sum;
+
+
+       
+       
+        //greedy:
+
+
+        int maximum=0;
+        for(int i=0; i<nums.length; i++){
+            maximum=Math.max(maximum,nums[i]);
+        }
+        int sum=0;
+        while(k-->0){
+            sum+=maximum;
+            maximum++;
+        }
+        return sum;
+
+
+    }
+}
