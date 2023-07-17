@@ -1,0 +1,14 @@
+ StringBuilder str=new StringBuilder();
+       int freq[]=new int[26]; 
+        Queue<Character>q=new LinkedList<>();
+        for(int i=0; i<A.length(); i++){
+            char c=A.charAt(i);
+            int val=c-'a';
+            freq[val]++;
+            if(freq[val]<=1) q.add(c);
+            else q.remove(c);
+            if(q.isEmpty()) str.append('#');
+            else str.append(q.peek());
+            
+        }
+        return str.toString();
