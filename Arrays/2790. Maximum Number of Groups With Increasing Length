@@ -1,0 +1,37 @@
+class Solution {
+    public int maxIncreasingGroups(List<Integer> usageLimits) {
+       
+        Collections.sort(usageLimits);
+//         // for(int i=0; i<usageLimits.size(); i++){
+//         //     i=usageLimits.get(i);
+//         //     a.add(i);
+            
+//         // }
+//         // HashSet<Integer>h=new HashSet<>();
+//         // for(int i=0; i<a.size();i++){
+//         //     h.add(a.get(i));
+//         // }
+//         int count=1;
+//         for(int i=1; i<usageLimits.size(); i++){
+//             if(usageLimits.get(i) > usageLimits.get(i - 1)){
+//                 count++;
+//             }
+//         }
+// //         if(h.size()==1) {return 1;}
+// //    return h.size()+1;
+// return count;
+
+            long count=0;
+            long total=0;
+            for(int i=0; i<usageLimits.size();i++){
+                total+=usageLimits.get(i);
+
+                if(total>=(count+1)*(count+2)/2){
+                    count++;
+                }
+            }
+            
+            return (int)count;
+
+    }
+}
