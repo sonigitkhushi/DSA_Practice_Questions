@@ -1,0 +1,32 @@
+class Solution {
+    public int singleNonDuplicate(int[] nums) {
+    //    int s=0;
+    //    int e=nums.length-1;
+    //    int u=0;
+    //    if(e==1) return nums[e];
+    //    while(s<e){
+    //        int mid=s+(e-s)/2;
+    //        if(nums[s+1]==nums[s] || nums[s+2]==nums[s+1]){
+    //            if((s % 2 == 0 && nums[s] == nums[s +1]) || (s %2 == 1 && nums[s] == nums[s - 1])){
+    //                s=mid+1;
+    //            }
+    //            else e=mid-1;
+
+    //        }
+    //        if(s==e) u=nums[s];
+    //    }
+    //    return nums[u];
+
+ 
+        int left = 0, right = nums.length-1;
+        while(left < right){
+            int mid = (left + right)/2;
+            if( (mid % 2 == 0 && nums[mid] == nums[mid +1]) || (mid %2 == 1 && nums[mid] == nums[mid - 1]) )
+                left = mid + 1;
+            else
+                right = mid;
+        }
+        return nums[left];
+    }
+}
+    
