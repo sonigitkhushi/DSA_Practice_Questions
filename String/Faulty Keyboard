@@ -1,0 +1,32 @@
+class Solution {
+    public String finalString(String s) {
+        StringBuilder sb=new StringBuilder();
+        
+        for(char c: s.toCharArray()){
+            if(c=='i'){
+                sb.reverse();
+            }else{
+                sb.append(c);
+            }
+        }
+
+
+       // String st=" ";
+        // for(int j=0; j<sb.length(); j++){
+        //     if(sb.charAt(j)=='í'){}
+                
+                   
+        //             //continue;
+                   
+                
+                 
+                 
+        //     }
+        //     else{
+        //         st+=sb.charAt(j);
+        //     }
+            
+        // }
+         return sb.toString();
+    }
+}
