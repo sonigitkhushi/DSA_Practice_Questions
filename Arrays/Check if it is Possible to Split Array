@@ -1,0 +1,13 @@
+class Solution {
+    public boolean canSplitArray(List<Integer> nums, int m) {
+        if(nums.size()==1 && m>=1 || nums.size()==2) return true;
+        for(int i=1; i<nums.size(); i++){
+        //     if(nums.get(i-1)==nums.get(i) || m%2==0 && nums.size()% 2==0) return true;
+        // }
+        int sum=nums.get(i-1)+nums.get(i);
+        if(sum>=m) return true;
+        
+    }
+    return false;
+    }
+}
