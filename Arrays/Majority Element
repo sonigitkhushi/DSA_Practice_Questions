@@ -1,0 +1,27 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+        // ArrayList<Integer>a=new ArrayList<>();
+        // int n=nums.length;
+        // int count=0;
+        // int k=0;
+        // for(int i=1; i<n; i++){
+        //     if(nums[i-1]==nums[i]){
+        //         count++;
+                
+        //     }
+        //     if(count>n/2){
+        //             a.add(nums[i]);
+        //         }
+
+            
+        // }
+            
+        // return a;
+
+
+        Arrays.sort(nums);
+        int n=nums.length;
+        return nums[n/2];
+        
+    }
+}
