@@ -1,0 +1,17 @@
+ Arrays.sort(nums);
+        int[] arr = new int[2];
+        int a = 0;
+        for(int i=0;i<nums.length-1;){
+            if(nums[i] != nums[i+1]){
+                arr[a] = nums[i];
+                a++;
+                i++;
+            }     
+            else{
+                i=i+2;
+            }
+        }
+        if(a == 1 && arr[1] == 0){
+            arr[1] = nums[nums.length-1];
+        }
+        return arr;
