@@ -1,0 +1,47 @@
+class Solution {
+    public int[] rearrangeArray(int[] nums) {
+        // int[] a=new int[nums.length];
+        // int n=nums.length;
+        // int temp=0;
+        // for(int i=1; i<nums.length; i++){
+        //     if(nums[0]<0 ){
+        //         if(nums[i]>0){
+        //             temp=nums[0];
+        //             nums[0]=nums[i];
+        //             nums[i]=temp;
+                   
+        //             break;
+        //         }
+        //     }
+        //      //a[i-1]=nums[0];
+        // }
+
+        // for(int i=1; i<n; i++){
+        //     for(int j=i+1; j<n; j++){
+        //         if(nums[i]>0 && nums[j]<0){
+        //             temp=nums[i];
+        //             nums[i]=nums[j];
+        //             nums[j]=nums[i];
+        //         }
+        //        // a[i]=nums[i];
+        //        // a[j]=nums[j];
+        //     }
+        // }
+        // return nums;
+
+        int[] a=new int[nums.length];
+        int e=0;
+        int o=1;
+        for(int i=0; i<nums.length; i++){
+            if(nums[i]>0){
+                a[e]=nums[i];
+                e=e+2;
+            }
+            if(nums[i]<0){
+                a[o]=nums[i];
+                o=o+2;
+            }
+        }
+        return a;
+    }
+}
