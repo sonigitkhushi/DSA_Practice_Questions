@@ -1,0 +1,33 @@
+class Solution {
+    public int[] sortArrayByParity(int[] nums) {
+    //     int[] b=new int[nums.length];
+    //     int j=0;
+    //     for(int i=0; i<nums.length; i++){
+    //         if(nums[i]%2==0){
+    //             b[j++]=nums[i];
+    //         }
+
+    //     }
+    //    int n=b.length;
+    //     for(int i=0; i<nums.length; i++){
+    //         if(nums[i]%2!=0){
+    //             if(n<nums.length){
+    //                  b[n]=nums[i]; n++;
+    //             }
+               
+    //         }
+    //     }
+    //     return b;
+
+            int i=0;
+            for(int j=0; j<nums.length; j++){
+                if(nums[j]%2==0){
+                    int t=nums[i];
+                    nums[i++]=nums[j];
+                    nums[j]=t;
+                }
+            }
+
+return nums;
+    }
+}
