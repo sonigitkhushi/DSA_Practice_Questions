@@ -1,0 +1,56 @@
+// class Solution {
+//     public String helper(String a){
+//         Stack<Character>at=new Stack<>();
+//         for(int i=0; i<at.size();i++){
+//             at.push(a.charAt(i));
+
+//         }
+//         String u=" ";
+//          while(!at.isEmpty()){
+//             u+=at.pop();
+//         }
+//         return u+" ";
+//     }
+//     public String reverseWords(String s) {
+//         String[]st=s.split(" ");
+//         // for(int i=0;)
+//         // Stack<Character>st=new Stack<>();
+//         // for(int i=0; i<s.length(); i++){
+//         //     st.push(s.charAt(i));
+//         // }
+//         // String t=" ";
+//         // while(!st.isEmpty()){
+//         //     t+=st.pop();
+//         // }
+//         // return t;
+//         // String t=" ";
+//         // for(int i=0; i<st.length;i++){
+//         //      t+= helper(st[i]+" ");
+//         // }
+//         // return t;
+//         String t=" ";
+//         for(String a:st){
+//              t+=helper(a);
+//         }
+//         return t;
+//     }
+// }
+
+
+class Solution {
+    public String reverseWords(String s) {
+        String[] words = s.split(" ");
+        StringBuilder reversedString = new StringBuilder();
+
+        for (String word : words) {
+            StringBuilder reversedWord = new StringBuilder();
+            for (int i = word.length() - 1; i >= 0; i--) {
+                reversedWord.append(word.charAt(i));
+            }
+            reversedString.append(reversedWord).append(" ");
+        }
+
+        // Remove the trailing space and return the reversed string
+        return reversedString.toString().trim();
+    }
+}
