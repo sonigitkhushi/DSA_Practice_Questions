@@ -1,0 +1,74 @@
+class Solution {
+    public boolean backspaceCompare(String s, String t) {
+        // // Stack<Character> s1 = new Stack<Character>();
+        // // Stack<Character> s2 = new Stack<Character>();
+        
+        // // for(char ch : s.toCharArray()){
+        // //     if(ch == '#'){
+        // //         if(!s1.isEmpty())
+        // //             s1.pop();
+        // //         continue;
+        // //     }
+        // //     s1.push(ch);
+        // // }
+        
+        // // for(char ch : t.toCharArray()){
+        // //     if(ch == '#'){
+        // //         if(!s2.isEmpty())
+        // //             s2.pop();
+        // //         continue;
+        // //     }
+        // //     s2.push(ch);
+        // // }
+        
+        // // String res1 = "";
+        // // String res2 = "";
+        
+        // // while(!s1.isEmpty())
+        // //     res1 += s1.pop();
+        
+        // // while(!s2.isEmpty())
+        // //     res2 += s2.pop();
+        
+        // // return res1.equals(res2);
+
+        // StringBuilder sb1=new StringBuilder();
+        // StringBuilder sb2=new StringBuilder();
+
+        // for(char i: s.toCharArray()){
+        //     if(i=='#'){
+        //         sb1.deleteCharAt(sb1.length() - 1);
+        //         continue;
+        //     }
+            
+        //     sb1.append(i);
+        // }
+
+        // for(int i: t.toCharArray()){
+        //     if(i=='#'){
+        //         sb2.deleteCharAt(sb2.length() - 1);
+        //           continue;
+        //     }
+          
+        //     sb2.append(i);
+        // }
+        // String a1=sb1.toString();
+        // String a2=sb2.toString();
+
+        // return sb1.equals(sb2);
+
+
+        return stringB(s).equals(stringB(t));
+    }
+    public String stringB(String str){
+        StringBuilder sb=new StringBuilder();
+        for(char c:str.toCharArray()){
+            if(c!='#'){
+                sb.append(c);
+            }else if(sb.length()!=0){
+                sb.deleteCharAt(sb.length()-1);
+            }
+        }
+        return sb.toString();
+    }
+}
