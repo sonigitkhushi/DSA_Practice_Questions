@@ -1,0 +1,32 @@
+class Solution {
+    public List<String> buildArray(int[] target, int n) {
+        List<String>a=new ArrayList<>();
+        Stack<Integer>s=new Stack<>();
+        int c=0;
+        for(int i=1; i<=n;  i++){
+            
+            if(c>=target.length) break;
+            if(target[c]==i){
+                a.add("Push");
+                c++;
+            }else{
+                a.add("Push");
+                a.add("Pop");
+            }
+        }
+        // for(int i=1; i<=n; i++){
+        //     h.add(i);
+        // }
+        // for(int i=0; i<target.length; i++){
+        //     if(h.contains(target[i])){
+        //         a.add("Push");
+        //         a.add("Pop");
+
+        //     }else{
+        //         a.add("Push");
+                
+        //     }
+        // }
+        return a;
+    }
+}
