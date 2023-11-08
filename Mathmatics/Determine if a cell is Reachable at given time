@@ -1,0 +1,26 @@
+// class Solution {
+//     public boolean isReachableAtTime(int sx, int sy, int fx, int fy, int t) {
+//         int s=(int)Math.pow((sx-fx),2);
+//         int k=(int)Math.pow((sy-fy),2);
+//         int u=(int)Math.sqrt(s+k);
+//        if(s==0 && k==0 && t==1) return false;
+//         if(u<=t) return true;
+//         else return false; 
+//     }
+// }
+
+public class Solution {
+    public boolean isReachableAtTime(int sx, int sy, int fx, int fy, int t) {
+        int xDistance = Math.abs(sx - fx);
+        int yDistance = Math.abs(sy - fy);
+        int min_dist = Math.min(xDistance, yDistance) + Math.abs(yDistance - xDistance);
+        if (min_dist == 0) {
+            if (t == 1) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        return t >= min_dist;
+    }
+}
