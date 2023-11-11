@@ -1,0 +1,86 @@
+//{ Driver Code Starts
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.*;
+
+
+public class Driver {
+    
+    public static void main(String[] args)throws IOException {
+       
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int tc = Integer.parseInt(br.readLine());
+        while(tc-->0)
+        {
+            String s1 = br.readLine();
+            String s2 = br.readLine();
+            
+            Solution obj = new Solution();
+            
+            boolean a = obj.areIsomorphic(s1,s2);
+            if(a)
+            System.out.println(1);
+            else
+            System.out.println(0);
+        }
+    }
+    
+}
+
+// } Driver Code Ends
+
+
+class Solution
+{
+    //Function to check if two strings are isomorphic.
+    public static boolean areIsomorphic(String str1,String str2)
+    {
+        // Your code here
+        // HashMap<Character,Integer>m1=new HashMap<>();
+        // HashMap<Character,Integer>m2=new HashMap<>();
+        
+        // char[] s1=str1.toCharArray();
+        // char[] s2=str2.toCharArray();
+        
+        // for(char c1:s1){
+        //     if(m1.containsKey(c1)){
+        //         m1.put(c1,m1.get(c1)+1);
+        //     }
+        //     else{
+        //         m1.put(c1,1);
+        //     }
+        // }
+        // for(char c2:s2){
+        //     if(m2.containsKey(c2)){
+        //         m2.put(c2,m2.get(c2)+1);
+        //     }
+        //     else{
+        //         m2.put(c2,1);
+        //     }
+        // }
+        // if(m1.keySet().equals(m2.keySet())) return true;
+        // return false;
+      if(str1.length() != str2.length())
+            return false;
+        
+        HashMap<Character, Character> m = new HashMap<>();
+        
+        for(int i=0;i<str1.length();i++){
+            if(m.containsKey(str1.charAt(i))){
+                if(m.get(str1.charAt(i)) != str2.charAt(i)){
+                    return false;
+                }
+            }else{
+                if(m.containsValue(str2.charAt(i))){
+                    return false;
+                }
+                m.put(str1.charAt(i), str2.charAt(i));
+            }
+        }
+        return true;
+        
+        
+    }
+}
