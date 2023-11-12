@@ -1,0 +1,15 @@
+class Solution {
+    public int findChampion(int[][] grid) {
+        int t=grid.length;
+        for(int i=0;i<t;i++){
+            int count=0;
+            for(int j=0; j<t; j++){
+                if(i==j) continue;
+                if(grid[i][j]==0) break;
+                count++;
+            }
+            if(count==t-1) return i;
+        }
+        return -1;
+    }
+}
