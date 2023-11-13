@@ -1,0 +1,58 @@
+class Solution {
+    public String sortVowels(String s) {
+        // //PriorityQueue<Integer>pq=new PriorityQueue<>();
+        // //String t="aeiouAEIOU";
+        // // for(char c:s.toCharArray()){
+        // //     if(t.contains(c+" ")){
+        // //         pq.add((int)c);
+        // //     }
+        // // }
+        // // System.out.print(pq);
+        // char[]str;
+        // String t="aeiouAEIOU";
+        // int i=0;
+        // for(char c:s.toCharArray()){
+        //     if(t.contains(c+" ")){
+        //         str[i++]=c;
+        //     }
+        // }
+        // Arrays.sort(str);
+        // System.out.print(str);
+        // return t;
+
+
+        // // StringBuilder sb=new StringBuilder();
+        // // for(char c: s.toCharArray()){
+        // //     if(t.contains(c+" ")){
+        // //         sb.append((char)(int)pq.poll());
+        // //     }else{
+        // //         sb.append(c);
+        // //     }
+        // // }
+        // // return sb.toString();
+
+
+
+
+
+
+        StringBuilder ans=new StringBuilder("");
+        ArrayList<Character>arr=new ArrayList<>();
+        int n=s.length();
+        for(int i=0; i<n;i++){
+            char ch=s.charAt(i);
+            if(ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U'||ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u') arr.add(ch);
+        }
+        Collections.sort(arr);
+        int idx=0;
+        for(int i=0; i<n; i++){
+            char ch=s.charAt(i);
+            if(ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U'||ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u'){
+                ans.append(arr.get(idx++));
+            }else{
+                ans.append(ch);
+            }
+        }
+        return ans.toString();
+    }
+}
