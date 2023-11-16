@@ -1,0 +1,57 @@
+class Solution {
+    // public static String swapString(String a,int i,int j){
+    //     char[]b=a.toCharArray();
+    //     char ch;
+    //     ch=b[i];
+    //     b[i]=b[j];
+    //     b[j]=ch;
+    //     return String.valueOf(b);
+    // }
+    // public static String generatePermutation(String str,int start,int end){
+    //     StringBuilder sb=new StringBuilder();
+
+        
+    //     if(start==end-1){
+    //         sb.append(str);
+    //     }else{
+    //         for(int i=start; i<end; i++){
+    //             str=swapString(str,start,i);
+    //             generatePermutation(str,start+1,end);
+    //             str=swapString(str,start,i);
+    //         }
+    //     }
+    //     return str.toString();
+
+    // }
+    public String findDifferentBinaryString(String[] nums) {
+        
+        // for(int i=0; i<nums.length;i++){
+        //     String c=nums[i];
+        //     System.out.println(generatePermutation(c,0,c.length()));
+            
+
+        // }
+       // System.out.print(k);
+
+//new one start from here
+
+        Set<Integer>in=new HashSet<>();
+        for(String num:nums){
+            in.add(Integer.parseInt(num,2));
+        }
+        int n=nums.length;
+        for(int i=0; i<n; i++){
+            if(!in.contains(i)){
+                String ans=Integer.toBinaryString(i);
+                while(ans.length()<n){
+                    ans="0"+ans;
+                }
+                return ans;
+            }
+        }
+
+
+
+       return " ";
+    }
+}
