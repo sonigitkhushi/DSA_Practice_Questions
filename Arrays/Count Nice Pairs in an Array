@@ -1,0 +1,48 @@
+class Solution {
+    public int countNicePairs(int[] nums) {
+        // int n=nums.length;
+        // int count=0;
+        // StringBuilder sb1=new StringBuilder();
+        // StringBuilder sb2=new StringBuilder();
+        // for(int i=0;i<n-1; i++){
+        //     for(int j=i+1; j<n; j++){
+        //         StringBuilder s1=sb1.append(nums[i]).reverse();
+        //         StringBuilder s2=sb2.append(nums[j]).reverse();
+        //        // System.out.println(s1.toString()+" "+ s2.toString());
+        //        if(nums[i]+ Integer.parseInt(s2.toString())==nums[j]+Integer.parseInt(s1.toString())) {
+        //                 count++;
+        //                  s1.delete(0,s1.length());
+        //       s2.delete(0,s2.length());
+        //        }
+
+        //       s1.delete(0,s1.length());
+        //       s2.delete(0,s2.length());
+        //     }
+            
+        // }
+        // return count;
+
+            int[]arr=new int[nums.length];
+            for(int i=0;i<nums.length; i++){
+                arr[i]=nums[i]-rev(nums[i]);
+            }
+            Map<Integer,Integer>m=new HashMap<>();
+            int ans=0;
+            int mod=(int)1e9+7;
+            for(int num:arr){
+                ans=(ans+m.getOrDefault(num,0))%mod;
+                m.put(num,m.getOrDefault(num,0)+1);
+            }
+            return ans;
+
+
+    }
+    public static int rev(int n){
+        int res=0;
+        while(n>0){
+            res=res*10+n%10;
+            n/=10;
+        }
+        return res;
+    }
+}
