@@ -1,34 +1,54 @@
 class Solution {
     public boolean arrayStringsAreEqual(String[] word1, String[] word2) {
-        String s1="";
-        String s2="";
+        // String s1="";
+        // String s2="";
         
-        for(int i=0; i<word1.length;i++){
+//         for(int i=0; i<word1.length;i++){
+//             for(int j=0; j<word1[i].length(); j++){
+//                 s1+=word1[i].charAt(j);
+//             }
+           
+//         }
+
+//         for(int i=0; i<word2.length;i++){
+//             for(int j=0; j<word2[i].length(); j++){
+//                 s2+=word2[i].charAt(j);
+//             }
+          
+//         }
+//   if(s1.length()>s2.length() || s2.length()>s1.length()) return false;
+//        int k=0;
+//        int l=0;
+//        while(k<s1.length() && l<s2.length()){
+//            if(s1.charAt(k)!=s2.charAt(l)){
+              
+//                return false;
+               
+//            }
+//            k++;
+//            l++;
+//        }
+    
+//         return true;
+Stack<Character>s1=new Stack<>();
+Stack<Character>s2=new Stack<>();
+ for(int i=0; i<word1.length;i++){
             for(int j=0; j<word1[i].length(); j++){
-                s1+=word1[i].charAt(j);
+                s1.push(word1[i].charAt(j));
             }
            
         }
 
         for(int i=0; i<word2.length;i++){
             for(int j=0; j<word2[i].length(); j++){
-                s2+=word2[i].charAt(j);
+                s2.push(word2[i].charAt(j));
             }
           
         }
-  if(s1.length()>s2.length() || s2.length()>s1.length()) return false;
-       int k=0;
-       int l=0;
-       while(k<s1.length() && l<s2.length()){
-           if(s1.charAt(k)!=s2.charAt(l)){
-              
-               return false;
-               
-           }
-           k++;
-           l++;
-       }
-    
-        return true;
+        if(s1.size()!=s2.size()) return false;
+        while(s1.size()>0 && s2.size()>0){
+            if(s1.pop()!=s2.pop()) return false;
+        }
+    return true;
     }
 }
