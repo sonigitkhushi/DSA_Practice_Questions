@@ -1,0 +1,38 @@
+// class Solution {
+//     public String largestGoodInteger(String num) {
+//         int i=0; 
+//         int j=i+1;
+//         String str="";
+//         while(i<j){
+//               if(j-i+1<3) j++;
+          
+              
+//                 if(j-i+1==3){
+//                     for(int k=i; k<=j; k++){
+//                         str+=num.charAt(k);
+//                     }
+//                     // i=j+1;
+//                     // j=i+1;
+//                     i++;
+//                     j++;
+//                 }
+            
+//         }
+//         return str;
+//     }
+// }
+class Solution {
+  public String largestGoodInteger(String num) {
+        int result = -1;
+        for (int i = 0; i + 2 < num.length(); i++) {
+            if (num.charAt(i) == num.charAt(i + 1) && num.charAt(i) == num.charAt(i + 2)) {
+                result = Math.max(result, num.charAt(i) - '0');
+            }
+        }
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < 3; i++) {
+            builder.append((char)(48 + result));
+        }
+        return result == -1 ? "" : builder.toString();
+    }
+}
