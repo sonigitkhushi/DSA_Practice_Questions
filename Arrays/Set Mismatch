@@ -1,0 +1,40 @@
+class Solution {
+    public int[] findErrorNums(int[] nums) {
+        // int[]a=new int[2];
+        // int sum=0;
+        // for(int i=1;i<nums.length; i++){
+        //   // for(int j=i+1; j<nums.length;j++){
+        //        if(nums[i]==nums[i-1]){
+        //            a[0]=i;
+        //        }
+        //   // }
+        // }
+        // HashSet<Integer>s=new HashSet<>();
+        // for(int n:nums){
+        //     s.add(n);
+        // }
+        // for(int n:s){
+        //     sum+=n;
+        // }
+        // int k=nums.length;;
+        // a[1]=(k*(k+1))/2 -sum;
+        // return a;
+
+        int[]a=new int[nums.length+1];
+        int mis=0;
+        int dup=0;
+        for(int i=0;i<nums.length; i++){
+            a[nums[i]]++;
+
+        }
+        for(int i=1; i<a.length; i++){
+            if(a[i]==2){
+                dup=i;
+            }
+            if(a[i]==0){
+                mis=i;
+            }
+        }
+        return new int[]{dup,mis};
+    }
+}
