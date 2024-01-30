@@ -1,0 +1,69 @@
+class Solution {
+//  private static boolean isDigit(String s) {
+        
+//         for (char c : s.toCharArray()) {
+//             if (!Character.isDigit(c)) {
+//                 return false;
+//             }
+//         }
+//         return true;
+//     }
+
+    public int evalRPN(String[] t) {
+        
+    //     ArrayList<Integer>a=new ArrayList<>();
+    //     Stack<String>s=new Stack<>();
+    //     for(int i=0;i<t.length;i++){
+    //      if(isDigit(t[i])){
+    //        a.add(Integer.parseInt(t[i]));
+    //      }else{
+    //          s.push(t[i]);
+    //      }
+    //   }
+    //   int i=1;
+    //   int sum=0;
+    //   while(!s.isEmpty() && i<a.size()){
+    //       sum=a.get(i-1);
+    //       if(s.pop()=="+"){
+    //           sum+=a.get(i);
+    //       }
+    //       else if(s.pop()=="-"){
+    //           sum-=a.get(i);
+    //       }
+    //       else if(s.pop()=="*"){
+    //           sum*=a.get(i);
+    //       }
+    //      else if(s.pop()=="/"){
+    //           sum/=a.get(i);
+    //       }
+    //       i++;
+    //   }
+    //     return sum;
+
+        int c, b;
+        Stack<Integer>S=new Stack<>();
+        for(String s:t){
+            if(s.equals("+")){
+                S.add(S.pop()+S.pop());
+            }
+            else if(s.equals("/")) {
+				b = S.pop();
+				c = S.pop();
+				S.add(c / b);
+			}
+            else if(s.equals("*")) {
+				S.add(S.pop() * S.pop());
+			}
+            else if(s.equals("-")) {
+				b = S.pop();
+				c = S.pop();
+				S.add(c - b);
+			}
+            else {
+				S.add(Integer.parseInt(s));
+			}
+        }
+        return S.pop();
+
+    }
+}
