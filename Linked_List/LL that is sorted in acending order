@@ -1,0 +1,24 @@
+class Solution {
+    
+   public Node sort(Node head){
+        //your code here, return the head of the sorted list
+        
+        ArrayList<Integer>a=new ArrayList<>();
+        while(head!=null){
+            a.add(head.data);
+            head=head.next;
+            
+        }
+        Collections.sort(a);
+       
+        Node temp=new Node(a.get(0));
+        Node curr=temp;
+        for(int i=1; i<a.size();i++){
+            curr.next=new Node(a.get(i));
+            curr=curr.next;
+        }
+        return temp;
+   }
+
+
+}
