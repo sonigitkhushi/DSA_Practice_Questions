@@ -1,0 +1,70 @@
+import java.util.*;
+
+class Student implements Comparable<Student> {
+    String name;
+    double GPA;
+    int age;
+    String major;
+
+    public Student(String name, double GPA, int age, String major) {
+        this.name = name;
+        this.GPA = GPA;
+        this.age = age;
+        this.major = major;
+    }
+
+    @Override
+    public int compareTo(Student other) {
+        return this.name.compareTo(other.name);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%-10s %-8.2f %-6d %-15s", name, GPA, age, major);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<Student> students = new ArrayList<>();
+
+        System.out.println("Enter student records (name, GPA, age, major), type 'done' when finished:");
+
+        while (true) {
+            System.out.print("Name: ");
+            String name = scanner.next();
+            if (name.equals("done")) break;
+            
+            double GPA;
+            while (true) {
+                System.out.print("GPA: ");
+                if (scanner.hasNextDouble()) {
+                    GPA = scanner.nextDouble();
+                    break;
+                } else {
+                    System.out.println("Invalid input. Please enter a valid GPA.");
+                    scanner.next(); // consume invalid input
+                }
+            }
+            
+            System.out.print("Age: ");
+            int age = scanner.nextInt();
+            
+            System.out.print("Major: ");
+            String major = scanner.next();
+            
+            students.add(new Student(name, GPA, age, major));
+        }
+
+        Collections.sort(students);
+
+        System.out.println("\nSorted Student Records:");
+        System.out.println("Name\t\tGPA\tAge\tMajor");
+        for (Student student : students) {
+            System.out.println(student);
+        }
+
+        scanner.close();
+    }
+}
