@@ -1,0 +1,4 @@
+ for(ArrayList<Integer> al: adj){
+            if(al.size()%2!=0) return  false;
+        }
+        return true;
