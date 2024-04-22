@@ -1,0 +1,80 @@
+//{ Driver Code Starts
+// Initial Template for Java
+
+import java.io.*;
+import java.util.*;
+
+class GFG {
+    public static void main(String args[]) throws IOException {
+        BufferedReader read =
+            new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(read.readLine());
+        while (t-- > 0) {
+            String s[] = read.readLine().split(" ");
+            int N = Integer.parseInt(s[0]);
+            int M = Integer.parseInt(s[1]);
+            int A[][] = new int[N][M];
+            for (int i = 0; i < N; i++) {
+                String S[] = read.readLine().split(" ");
+                for (int j = 0; j < M; j++) {
+                    A[i][j] = Integer.parseInt(S[j]);
+                }
+            }
+            Solution ob = new Solution();
+            System.out.println(ob.minRow(N, M, A));
+        }
+    }
+}
+
+// } Driver Code Ends
+
+
+// User function Template for Java
+
+class Solution {
+    int minRow(int n, int m, int a[][]) {
+        // code here
+        // int idx=-1;
+        int min=Integer.MAX_VALUE;
+        int minidx=-1;
+        // int[]ar=new int[n];
+        int count=0;
+        for(int i=0;i<n;i++){
+            count=0;
+            for(int j=0;j<m;j++){
+                if(a[i][j]==1){
+                   count++;
+                  // idx=i;
+                }
+            }
+            if(count<min){
+                min=count;
+                minidx=i;
+            }
+            // ar[i]=count;
+            
+           // min=Math.min(min,count);
+            //minidx=Math.min(idx,minidx);
+            
+            
+        }
+        // for(int i=0;i<n;i++){
+        //     System.out.print(ar[i]+" ");
+        // }
+        // int idx=-1;
+        // for(int i=1;i<n;i++){
+        //     // for(int j=1;j<;j++){
+        //     //     if(ar[i]<=ar[j]){
+        //     //         idx=i;
+        //     //         break;
+        //     //     }
+        //     // }
+        //     // min=Math.min(min,ar[i]);
+        //     // minidx=Math.min(minidx,i);
+        //     if(ar[i-1]<ar[i]){
+        //         idx=i-1;
+        //     }
+        // }
+        return minidx+1;
+    }
+};
