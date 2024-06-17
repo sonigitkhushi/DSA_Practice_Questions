@@ -1,0 +1,42 @@
+class Solution {
+    public boolean judgeSquareSum(int c) {
+        // int a=1;
+        // int b=2;
+        // // while(Math.pow(a,2)+Math.pow(b,2)!=c){
+        // //     a++;
+        // //     b++;
+        // // }
+        // if( c==1||c%2==0) return true;
+        // if(Math.pow(a,2)+Math.pow(b,2)!=c) return false;
+
+        // return true;
+
+        // for(long a=0;a*a<=c;a++){
+        //     for(long b=0;b<=c;b++){
+        //         if(a*a + b*b ==c) return true;
+        //     }
+        // }
+        // return false;
+
+        // for(long a=0;a*a<=c; a++){
+        //     int b=c-(int)(a*a);
+        //     int i=1;
+        //     int sum=0;
+        //     while(sum<b){
+        //         sum+=i;
+        //         i+=2;
+        //     }
+        //     if(sum==b) return true;
+           
+        // }
+        //  return false;
+
+
+          for (long a = 0; a * a <= c; a++) {
+            double b = Math.sqrt(c - a * a);
+            if (b == (int) b)
+                return true;
+        }
+        return false;
+    }
+} 
