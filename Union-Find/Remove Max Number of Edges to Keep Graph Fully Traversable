@@ -1,0 +1,60 @@
+class Solution {
+
+    public int maxNumEdgesToRemove(int n, int[][] e) {
+       Arrays.sort(e,(a,b)->b[0]-a[0]);
+       int eda=0;
+       UnionFind alice=new UnionFind(n);
+        UnionFind bob=new UnionFind(n);
+
+        for(int[]ed:e){
+            int ty=ed[0];
+            int a=ed[1];
+            int b=ed[2];
+
+            switch(ty){
+                case 3:
+                    if(alice.unite(a,b) | bob.unite(a,b)){
+                        eda++;
+                    }
+                    break;
+                case 2:
+                    if(bob.unite(a,b)) eda++;
+                    break;
+                case 1:
+                    if(alice.unite(a,b)) eda++;
+                    break;
+            }
+        }
+        return (alice.united() && bob.united()) ? e.length-eda : -1;
+    }
+
+    private class UnionFind{
+        int[]com;
+        int distinct;
+        public UnionFind(int n){
+            com=new int[n+1];
+            for(int i=0;i<=n;i++){
+                com[i]=i;
+            }
+            distinct=n;
+        }
+        private boolean unite(int a,int b){
+            if(findCom(a)!=findCom(b)){
+                com[findCom(a)]=b;
+                distinct--;
+                return true;
+            }
+            return false;
+        }
+        private int findCom(int a){
+            if(com[a]!=a){
+                com[a]=findCom(com[a]);
+            }
+            return com[a];
+        }
+        private boolean united(){
+            return distinct==1;
+        }
+    }
+
+}
