@@ -1,0 +1,25 @@
+class Solution {
+    ArrayList<Integer>ans=new ArrayList<>();
+
+    public ArrayList<Integer> Ancestors(Node root, int target) {
+        // add your code here
+        ArrayList<Integer>temp=new ArrayList<>();
+        helper(root,temp,target);
+        return ans;
+        
+    }
+    
+    
+    public void helper(Node root,ArrayList<Integer>al,int target){
+        if(root==null)
+        return;
+        if(root.data==target){
+            Collections.reverse(al);
+            ans.addAll(al);
+        }
+        al.add(root.data);
+        helper(root.left,al,target);
+        helper(root.right,al,target);
+        al.remove(al.size()-1);
+    }
+}
