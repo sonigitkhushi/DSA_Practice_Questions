@@ -1,0 +1,36 @@
+class Solution {
+    public int maxRepeating(String s, String w) {
+        
+    //     int count=0;
+    //     boolean flag=false;
+    //    int i=0;
+    //    int j=0;
+    //    while(i<s.length()){
+    //     for(int k=0;k<w.length();k++){
+    //         if(w.charAt(k)==s.charAt(i)){
+    //             i++;
+    //             flag=true;
+    //         }
+    //         else{
+    //             flag=false;
+    //             break;
+    //         }
+    //     }
+    //     if(flag==true){
+    //         count++;
+    //     }
+    //    i++;
+    //    }
+    //    return count;
+    return fun(s,w,1);
+
+    }
+        int fun(String s,String w,int k){
+            String rep=w.repeat(k);
+            if(s.contains(rep)){
+                return fun(s,w,k+1);
+            }else{
+                return k-1;
+            }
+        }
+}
