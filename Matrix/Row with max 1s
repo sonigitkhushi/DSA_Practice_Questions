@@ -1,0 +1,33 @@
+class Solution {
+    public int rowWithMax1s(int arr[][]) {
+        int max = 0;
+        int idx = -1;
+        
+        for(int i = 0; i < arr.length; i++) {
+            int count = countOnes(arr[i]);
+            if (count > max) {
+                max = count;
+                idx = i;
+            }
+        }
+        
+        return idx;
+    }
+
+    private int countOnes(int row[]) {
+        int low = 0, high = row.length - 1;
+        
+        // Binary search to find the first 1
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (row[mid] == 1) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        
+        // Number of 1's is the difference from the first 1 to the end of the row
+        return row.length - low;
+    }
+}
