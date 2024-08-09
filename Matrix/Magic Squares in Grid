@@ -1,0 +1,51 @@
+class Solution {
+    public int numMagicSquaresInside(int[][] grid) {
+        int n=grid.length;
+        int m=grid[0].length;
+        // int k=Math.abs(n-m);
+        // if(grid.length==1) return 0;
+        // for(int i=0;i<n;i++){
+        //     for(int j=0;j<m-k;j++){
+        //         int sum=grid[i][j];
+        //     }
+        // }
+        int sum=0;
+        for(int i=0;i+2<n;i++){
+            for(int j=0;j+2<m;j++){
+                if(fun(grid,i,j)){
+                    sum++;
+                }
+            }
+        }
+        return sum;
+
+    }
+    public static boolean fun(int[][]grid,int r,int c){
+        boolean[]seen=new boolean[10];
+        for(int i=0;i<3;i++){
+            for(int j=0;j<3;j++){
+                int num=grid[r+i][c+j];
+                if(num<1 || num>9) return false;
+                if(seen[num]) return false;
+                seen[num]=true;
+            }
+        }
+       int dia1=grid[r][c]+grid[r+1][c+1]+grid[r+2][c+2];
+       int dia2=grid[r+2][c]+grid[r+1][c+1]+grid[r][c+2];
+       if(dia1!=dia2) return false;
+       int row1=grid[r][c]+grid[r][c+1]+grid[r][c+2];
+       int row2=grid[r+1][c]+grid[r+1][c+1]+grid[r+1][c+2];
+       int row3=grid[r+2][c]+grid[r+2][c+1]+grid[r+2][c+2];
+
+       if(!(row1==dia1 && row2==dia1 && row3==dia1)) return false;
+
+       int col1=grid[r][c]+grid[r+1][c]+grid[r+2][c];
+       int col2=grid[r][c+1]+grid[r+1][c+1]+grid[r+2][c+1];
+       int col3=grid[r][c+2]+grid[r+1][c+2]+grid[r+2][c+2];
+       if(!(col1==dia1 && col2==dia2 && col3==dia2)) return false;
+
+
+  return true;
+    }
+  
+}
