@@ -1,0 +1,57 @@
+// class Solution {
+//     public int findMinDifference(List<String> timePoints) {
+//         int min=Integer.MAX_VALUE;
+//         String k="";
+//         List<Integer>a=new ArrayList<>();
+//         for(String s:timePoints){
+//             String st=s;
+//             if(st.charAt(3)=='0' && st.charAt(4)=='0'){
+//                  k="60";
+//             }
+//             else{
+//                  k=st.substring(3);
+//             }
+//             //String k+=st.charAt(2)+st.charAt(3);
+//             int u=Integer.parseInt(k);
+//             a.add(u);
+//             k="";
+//         }
+//         for(int i=0;i<a.size();i++){
+//             for(int j=i+1;j<a.size();j++){
+//                 min=Math.min(Math.abs(a.get(i)-a.get(j)),min);
+//             }
+            
+//         }
+//         return min;
+//     }
+// }
+
+
+class Solution {
+    public int findMinDifference(List<String> timePoints) {
+        int min = Integer.MAX_VALUE;
+        List<Integer> a = new ArrayList<>();
+
+       
+        for (String s : timePoints) {
+            String[] timeParts = s.split(":");
+            int hours = Integer.parseInt(timeParts[0]);
+            int minutes = Integer.parseInt(timeParts[1]);
+            int totalMinutes = hours * 60 + minutes;
+            a.add(totalMinutes);
+        }
+
+       
+        Collections.sort(a);
+
+        for (int i = 1; i < a.size(); i++) {
+            min = Math.min(min, a.get(i) - a.get(i - 1));
+        }
+
+       
+        int wrapAroundDifference = (1440 - a.get(a.size() - 1)) + a.get(0);
+        min = Math.min(min, wrapAroundDifference);
+
+        return min;
+    }
+}
